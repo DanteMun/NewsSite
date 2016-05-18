@@ -1,0 +1,32 @@
+{% extends 'news/base.html' %}
+
+{% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{message.tags}}">
+            {{message}}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<div class="container">
+    <div class="jumbotron">
+        <h3>{{post.title}}</h3>
+        <img src = "{{post.photo.url}}" />
+        <p style="font-size: 14px;">
+            {{post.content}}
+        </p>
+    </div>
+    <div class="jumbotron">
+        <h4>댓글</h4>
+        {% for comment in comment_list %}
+        <div style="background-color: white;">
+            <h5><b>작성자</b> : {{comment.author}}</h5>
+            <h5><b>내&nbsp;&nbsp;용</b> : {{comment.message}}</h5>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
